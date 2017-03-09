@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>我与代码</title>
+  <subtitle>孙帅</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-03-09T06:04:03.544Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>孙帅</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端知识点补漏</title>
+    <link href="http://yoursite.com/2016/12/01/qianduanzhishidian/"/>
+    <id>http://yoursite.com/2016/12/01/qianduanzhishidian/</id>
+    <published>2016-12-01T00:12:22.000Z</published>
+    <updated>2017-03-09T06:04:03.544Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="HTML-amp-CSS"><a href="#HTML-amp-CSS" class="headerlink" title="HTML&amp;CSS"></a>HTML&amp;CSS</h1><h2 id="1-常用那几种浏览器测试？有哪些内核-Layout-Engine"><a href="#1-常用那几种浏览器测试？有哪些内核-Layout-Engine" class="headerlink" title="1. 常用那几种浏览器测试？有哪些内核(Layout Engine)?"></a>1. 常用那几种浏览器测试？有哪些内核(Layout Engine)?</h2><p>(Q1) 浏览器：IE，Chrome，FireFox，Safari，Opera。<br>(Q2) 内核：Trident，Gecko，Presto，Webkit。</p>
+<h2 id="2-说下行内元素和块级元素的区别？行内块元素的兼容性使用？（IE8-以下）"><a href="#2-说下行内元素和块级元素的区别？行内块元素的兼容性使用？（IE8-以下）" class="headerlink" title="2. 说下行内元素和块级元素的区别？行内块元素的兼容性使用？（IE8 以下）"></a>2. 说下行内元素和块级元素的区别？行内块元素的兼容性使用？（IE8 以下）</h2><p>(Q1) 行内元素：会在水平方向排列，不能包含块级元素，设置width无效，height无效(可以设置line-height)，margin上下无效，padding上下无效。<br>块级元素：各占据一行，垂直方向排列。从新行开始结束接着一个断行。<br>(Q2) 兼容性：display:inline-block;<em>display:inline;</em>zoom:1;</p>
+<h2 id="3-清除浮动有哪些方式？比较好的方式是哪一种？"><a href="#3-清除浮动有哪些方式？比较好的方式是哪一种？" class="headerlink" title="3. 清除浮动有哪些方式？比较好的方式是哪一种？"></a>3. 清除浮动有哪些方式？比较好的方式是哪一种？</h2><p>(Q1)<br>（1）父级div定义height。<br>（2）结尾处加空div标签clear:both。<br>（3）父级div定义伪类:after和zoom。<br>（4）父级div定义overflow:hidden。<br>（5）父级div定义overflow:auto。<br>（6）父级div也浮动，需要定义宽度。<br>（7）父级div定义display:table。<br>（8）结尾处加br标签clear:both。</p>
+<p>(Q2) 比较好的是第3种方式，好多网站都这么用。</p>
+<h2 id="4-box-sizing常用的属性有哪些？分别有什么作用？"><a href="#4-box-sizing常用的属性有哪些？分别有什么作用？" class="headerlink" title="4. box-sizing常用的属性有哪些？分别有什么作用？"></a>4. box-sizing常用的属性有哪些？分别有什么作用？</h2><p>(Q1)box-sizing: content-box|border-box|inherit;<br>(Q2)content-box:宽度和高度分别应用到元素的内容框。在宽度和高度之外绘制元素的内边距和边框(元素默认效果)。<br>border-box:元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。</p>
+<h2 id="5-Doctype作用？标准模式与兼容模式各有什么区别"><a href="#5-Doctype作用？标准模式与兼容模式各有什么区别" class="headerlink" title="5. Doctype作用？标准模式与兼容模式各有什么区别?"></a>5. Doctype作用？标准模式与兼容模式各有什么区别?</h2><p>(Q1) &lt;!DOCTYPE&gt;告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。</p>
+<p>(Q2) 标准模式的排版和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。</p>
+<h2 id="6-HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？"><a href="#6-HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？" class="headerlink" title="6. HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？"></a>6. HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？</h2><p>HTML5不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）。<br>而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。</p>
+<h2 id="7-页面导入样式时，使用link和-import有什么区别？"><a href="#7-页面导入样式时，使用link和-import有什么区别？" class="headerlink" title="7. 页面导入样式时，使用link和@import有什么区别？"></a>7. 页面导入样式时，使用link和@import有什么区别？</h2><p>（1）link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;<br>（2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;<br>（3）import是CSS2.1 提出的，只在IE5以上才能被识别，而link是XHTML标签，无兼容问题。</p>
+<h2 id="8-介绍一下你对浏览器内核的理解？"><a href="#8-介绍一下你对浏览器内核的理解？" class="headerlink" title="8. 介绍一下你对浏览器内核的理解？"></a>8. 介绍一下你对浏览器内核的理解？</h2><p>主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。</p>
+<p>渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。</p>
+<p>JS引擎则：解析和执行javascript来实现网页的动态效果。</p>
+<p>最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。</p>
+<h2 id="9-html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分-HTML-和-HTML5？"><a href="#9-html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分-HTML-和-HTML5？" class="headerlink" title="9. html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？"></a>9. html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</h2><p>(Q1)<br>HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。<br>(1)绘画 canvas;<br>(2)用于媒介回放的 video 和 audio 元素;<br>(3)本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失;<br>(4)sessionStorage 的数据在浏览器关闭后自动删除;<br>(5)语意化更好的内容元素，比如 article、footer、header、nav、section;<br>(6)表单控件，calendar、date、time、email、url、search;<br>(7)新的技术webworker, websocket, Geolocation;</p>
+<p>(Q2)<br>IE8/IE7/IE6支持通过document.createElement方法产生的标签，<br>可以利用这一特性让这些浏览器支持HTML5新标签，<br>浏览器支持新标签后，还需要添加标签默认的样式。<br>当然也可以直接使用成熟的框架、比如html5shim，<br><!--[if lt IE 9]>
+<![endif]--></p>
+<h2 id="10-简述一下你对HTML语义化的理解？"><a href="#10-简述一下你对HTML语义化的理解？" class="headerlink" title="10. 简述一下你对HTML语义化的理解？"></a>10. 简述一下你对HTML语义化的理解？</h2><p>用正确的标签做正确的事情。<br>html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;<br>即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;<br>搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;<br>使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</p>
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="1-介绍js的基本数据类型"><a href="#1-介绍js的基本数据类型" class="headerlink" title="1. 介绍js的基本数据类型"></a>1. 介绍js的基本数据类型</h2><p>Undefined、Null、Boolean、Number、String</p>
+<h2 id="2-js有哪些内置对象？"><a href="#2-js有哪些内置对象？" class="headerlink" title="2. js有哪些内置对象？"></a>2. js有哪些内置对象？</h2><p>数据封装类对象：Object、Array、Boolean、Number 和 String</p>
+<p>其他对象：Function、Arguments、Math、Date、RegExp、Error</p>
+<h2 id="3-this对象的理解"><a href="#3-this对象的理解" class="headerlink" title="3. this对象的理解"></a>3. this对象的理解</h2><p>this总是指向函数的直接调用者（而非间接调用者）；</p>
+<p>如果有new关键字，this指向new出来的那个对象；</p>
+<p>在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window。</p>
+<h2 id="4-eval是做什么的？"><a href="#4-eval是做什么的？" class="headerlink" title="4. eval是做什么的？"></a>4. eval是做什么的？</h2><p>它的功能是把对应的字符串解析成JS代码并运行；</p>
+<p>应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。</p>
+<p>由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval(‘(‘+ str +’)’)。</p>
+<h2 id="5-DOM怎样添加、移除、移动、复制、创建和查找节点"><a href="#5-DOM怎样添加、移除、移动、复制、创建和查找节点" class="headerlink" title="5. DOM怎样添加、移除、移动、复制、创建和查找节点"></a>5. DOM怎样添加、移除、移动、复制、创建和查找节点</h2><p>// 创建新节点</p>
+<p>createDocumentFragment() //创建一个DOM片段</p>
+<p>createElement() //创建一个具体的元素</p>
+<p>createTextNode() //创建一个文本节点</p>
+<p>// 添加、移除、替换、插入</p>
+<p>appendChild()</p>
+<p>removeChild()</p>
+<p>replaceChild()</p>
+<p>insertBefore() //在已有的子节点前插入一个新的子节点</p>
+<p>// 查找</p>
+<p>getElementsByTagName() //通过标签名称</p>
+<p>getElementsByName() //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)</p>
+<p>getElementById() //通过元素Id，唯一性</p>
+<h2 id="6-null和undefined的区别？"><a href="#6-null和undefined的区别？" class="headerlink" title="6. null和undefined的区别？"></a>6. null和undefined的区别？</h2><p>null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。</p>
+<p>undefined：</p>
+<p>（1）变量被声明了，但没有赋值时，就等于undefined。</p>
+<p>（2) 调用函数时，应该提供的参数没有提供，该参数等于undefined。</p>
+<p>（3）对象没有赋值的属性，该属性的值为undefined。</p>
+<p>（4）函数没有返回值时，默认返回undefined。</p>
+<p>null：</p>
+<p>（1） 作为函数的参数，表示该函数的参数不是对象。</p>
+<p>（2） 作为对象原型链的终点。</p>
+<h2 id="7-new操作符具体干了什么呢"><a href="#7-new操作符具体干了什么呢" class="headerlink" title="7. new操作符具体干了什么呢?"></a>7. new操作符具体干了什么呢?</h2><p>（1）创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。</p>
+<p>（2）属性和方法被加入到 this 引用的对象中。</p>
+<p>（3）新创建的对象由 this 所引用，并且最后隐式的返回 this 。</p>
+<h2 id="8-JSON-的了解？"><a href="#8-JSON-的了解？" class="headerlink" title="8. JSON 的了解？"></a>8. JSON 的了解？</h2><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它是基于JavaScript的一个子集。数据格式简单, 易于读写, 占用带宽小。</p>
+<p>格式：采用键值对，例如：{‘age’:’12’, ‘name’:’back’}</p>
+<h2 id="9-call-和-apply-的区别和作用？"><a href="#9-call-和-apply-的区别和作用？" class="headerlink" title="9. call() 和 apply() 的区别和作用？"></a>9. call() 和 apply() 的区别和作用？</h2><p>apply()函数有两个参数：第一个参数是上下文，第二个参数是参数组成的数组。如果上下文是null，则使用全局对象代替。</p>
+<p>如：function.apply(this,[1,2,3]);</p>
+<p>call()的第一个参数是上下文，后续是实例传入的参数序列。</p>
+<p>如：function.call(this,1,2,3);</p>
+<h2 id="10-如何获取UA？"><a href="#10-如何获取UA？" class="headerlink" title="10. 如何获取UA？"></a>10. 如何获取UA？</h2><p>function whatBrowser() { </p>
+<p>document.Browser.Name.value=navigator.appName; </p>
+<p>document.Browser.Version.value=navigator.appVersion; </p>
+<p>document.Browser.Code.value=navigator.appCodeName; </p>
+<p>document.Browser.Agent.value=navigator.userAgent; </p>
+<p>} </p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="1-HTTP状态码知道哪些？"><a href="#1-HTTP状态码知道哪些？" class="headerlink" title="1. HTTP状态码知道哪些？"></a>1. HTTP状态码知道哪些？</h2><p>100 Continue 继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息</p>
+<p>200 OK 正常返回信息</p>
+<p>201 Created 请求成功并且服务器创建了新的资源</p>
+<p>202 Accepted 服务器已接受请求，但尚未处理</p>
+<p>301 Moved Permanently 请求的网页已永久移动到新位置。</p>
+<p>302 Found 临时性重定向。</p>
+<p>303 See Other 临时性重定向，且总是使用 GET 请求新的 URI。</p>
+<p>304 Not Modified 自从上次请求后，请求的网页未修改过。</p>
+<p>400 Bad Request 服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。</p>
+<p>401 Unauthorized 请求未授权。</p>
+<p>403 Forbidden 禁止访问。</p>
+<p>404 Not Found 找不到如何与 URI 相匹配的资源。</p>
+<p>500 Internal Server Error 最常见的服务器端错误。</p>
+<p>503 Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）。</p>
+<h2 id="2-你有哪些性能优化的方法？"><a href="#2-你有哪些性能优化的方法？" class="headerlink" title="2. 你有哪些性能优化的方法？"></a>2. 你有哪些性能优化的方法？</h2><p>（1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</p>
+<p>（2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</p>
+<p>（3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。</p>
+<p>（4） 当需要设置的样式很多时设置className而不是直接操作style。</p>
+<p>（5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。</p>
+<p>（6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。</p>
+<p>（7） 图片预加载，将样式表放在顶部，将脚本放在底部 加上时间戳。</p>
+<h2 id="3-什么叫优雅降级和渐进增强？"><a href="#3-什么叫优雅降级和渐进增强？" class="headerlink" title="3. 什么叫优雅降级和渐进增强？"></a>3. 什么叫优雅降级和渐进增强？</h2><p>优雅降级：Web站点在所有新式浏览器中都能正常工作，如果用户使用的是老式浏览器，则代码会检查以确认它们是否能正常工作。由于IE独特的盒模型布局问题，针对不同版本的IE的hack实践过优雅降级了,为那些无法支持功能的浏览器增加候选方案，使之在旧式浏览器上以某种形式降级体验却不至于完全失效。</p>
+<p>渐进增强：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新式浏览器才支持的功能,向页面增加无害于基础浏览器的额外样式和功能的。当浏览器支持时，它们会自动地呈现出来并发挥作用。</p>
+<h2 id="4-哪些常见操作会造成内存泄漏？"><a href="#4-哪些常见操作会造成内存泄漏？" class="headerlink" title="4. 哪些常见操作会造成内存泄漏？"></a>4. 哪些常见操作会造成内存泄漏？</h2><p>内存泄漏指任何对象在您不再拥有或需要它之后仍然存在。</p>
+<p>垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。如果一个对象的引用数量为 0（没有其他对象引用过该对象），或对该对象的惟一引用是循环的，那么该对象的内存即可回收。</p>
+<p>setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。</p>
+<p>闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）。</p>
+<h2 id="5-线程与进程的区别"><a href="#5-线程与进程的区别" class="headerlink" title="5. 线程与进程的区别"></a>5. 线程与进程的区别</h2><p>一个程序至少有一个进程,一个进程至少有一个线程。</p>
+<p>线程的划分尺度小于进程，使得多线程程序的并发性高。 </p>
+<p>另外，进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率。 </p>
+<p>线程在执行过程中与进程还是有区别的。每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。 </p>
+<p>从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。这就是进程和线程的重要区别。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;HTML-amp-CSS&quot;&gt;&lt;a href=&quot;#HTML-amp-CSS&quot; class=&quot;headerlink&quot; title=&quot;HTML&amp;amp;CSS&quot;&gt;&lt;/a&gt;HTML&amp;amp;CSS&lt;/h1&gt;&lt;h2 id=&quot;1-常用那几种浏览器测试？有哪些内核-Layout
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>猜拳小游戏</title>
+    <link href="http://yoursite.com/2016/05/04/caiquanyouxi/"/>
+    <id>http://yoursite.com/2016/05/04/caiquanyouxi/</id>
+    <published>2016-05-04T09:08:33.000Z</published>
+    <updated>2017-03-09T06:00:44.233Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><p>switch case break default<br>条件   判断 退出  默认<br>a.只要匹配上一个case，那么它下面的所有的case都会执行包括default<br>b.break的意思跳出当前结构</p>
+<h4 id="while-do…while"><a href="#while-do…while" class="headerlink" title="while/do…while"></a>while/do…while</h4><p>一般情况下面，如果条件判断是数字的比较==&lt;&gt;，for循环优先.<br>如果是非数值相关的比较循环，while优先， 例如电脑里的扫雷游戏就是 do执行后再判断，用户的体验好</p>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;Keywords&quot; content=&quot;alex,猜拳小游戏,do while,switch&quot;&gt;
+&lt;meta name=&quot;Description&quot; content=&quot;&quot;&gt;
+&lt;meta name=&quot;Author&quot; content=&quot;alex&quot;&gt;
+&lt;title&gt;简单猜拳小游戏&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+*{margin:0;padding:0}
+html,body{
+width:100%;
+height:100%;
+color:#f60;
+font-family:&quot;Microsoft Yahei&quot;;
+font-weight:bold;
+font-size:20px;
+}
+.content{
+width:300px;
+height:250px;
+margin:100px auto;
+background:#669933;
+border-radius:8px;
+line-height:170px;
+}
+#box1{
+width:300px;
+height:30px;
+text-align:center;
+}
+#box2{
+width:300px;
+height:30px;
+text-align:center;
+}
+#box3{
+width:300px;
+height:30px;
+text-align:center;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;div id=&quot;box1&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;box2&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;box3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var user; 
+var computer;
+var res;
+var oBox1 = document.getElementById(&apos;box1&apos;);
+var oBox2 = document.getElementById(&apos;box2&apos;);
+var oBox3 = document.getElementById(&apos;box3&apos;);
+do
+{
+user = parseInt( window.prompt(&apos;请出拳：0--石头；1--剪刀；2--布&apos;) );
+}
+while ( !(user==0||user==1||user==2) );
+computer = (parseInt(Math.random()*10))%3//电脑产生0、1、2的随机数
+switch ( user )
+{
+case 0 : oBox1.innerHTML = (&apos;您出的是:石头&lt;/br&gt;&apos;);  
+break;
+case 1 : oBox1.innerHTML = (&apos;您出的是:剪刀&lt;/br&gt;&apos;);  
+break;
+case 2 : oBox1.innerHTML = (&apos;您出的是:布&lt;/br&gt;&apos;);  
+break;
+}
+switch ( computer )
+{
+case 0 : oBox2.innerHTML = (&apos;电脑出的是:石头&lt;/br&gt;&apos;);  
+break;
+case 1 : oBox2.innerHTML = (&apos;电脑出的是:剪刀&lt;/br&gt;&apos;);  
+break;
+case 2 : oBox2.innerHTML = (&apos;电脑出的是:布&lt;/br&gt;&apos;);  
+break;
+}
+res = user - computer;
+switch ( res )
+{
+case 0 : oBox3.innerHTML = (&apos;结果是：平手&lt;/br&gt;&apos;);
+break;
+case -1 :
+case 2 : oBox3.innerHTML = (&apos;结果是：您赢了&lt;/br&gt;&apos;);
+break;
+case 1 :
+case -2 : oBox3.innerHTML = (&apos;结果是：您输了&lt;/br&gt;&apos;);
+break;
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>DEMO演示</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h3&gt;&lt;h4 id=&quot;switch&quot;&gt;&lt;a href=&quot;#switch&quot; class=&quot;headerlink&quot; title=&quot;switch&quot;&gt;&lt;
+    
+    </summary>
+    
+      <category term="Demo" scheme="http://yoursite.com/categories/Demo/"/>
+    
+    
+      <category term="demo" scheme="http://yoursite.com/tags/demo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sublime常用插件</title>
+    <link href="http://yoursite.com/2016/03/04/sublime%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/"/>
+    <id>http://yoursite.com/2016/03/04/sublime常用插件/</id>
+    <published>2016-03-04T08:03:59.000Z</published>
+    <updated>2017-03-07T07:28:19.208Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="sublime插件"><a href="#sublime插件" class="headerlink" title="sublime插件"></a>sublime插件</h2><p>sublime号称前端开发利器，尤其是sublime的各种好用的插件更是如虎添翼，使用这些插件可以极大的提高工作效率，提高代码的质量。</p>
+<h3 id="package-install-manager"><a href="#package-install-manager" class="headerlink" title="package install manager"></a>package install manager</h3><p>通俗易懂地说，这个是你在完成安装SublimeText后必须安装的东西。你问为什么？因为有了这个特殊的“插件包”，你可以很容易地安装、升级、删除，甚至非常方便地查看您已经安装在SublimeText中的包或插件的列表。它通过菜单和对应的行为使这些过程变得非常容易和有组织。<br>在控制台输入以下代码：</p>
+<pre><code>import urllib.request,os,hashlib; h = &apos;df21e130d211cfc94d9b0905775a7c0f&apos; + &apos;1e3d39e33b79698005270310898eea76&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)
+</code></pre><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p>虽然名字看上去并不友好，但作为开发者的你肯定一眼就能明白它是干什么的。这个插件会将Git整合进你的SublimeText，使的你可以在SublimeText中运行Git命令，包括添加，提交文件，查看日志，文件注解以及其它Git功能。</p>
+<p>乱码问题：<br>需要在preference-&gt;package settings-&gt;git-&gt;settings user找到Git.sublime-settings然后编辑输入以下内容：</p>
+<pre><code>{
+  &quot;git_command&quot;: &quot;C:\\Program Files\\Git\\bin\\git.exe&quot;
+}
+</code></pre><p>这样乱码就可以解决了。</p>
+<h3 id="Emmet"><a href="#Emmet" class="headerlink" title="Emmet"></a>Emmet</h3><p>概括地说，Emmet（译者注：前身就是以前大名鼎鼎的Zen Coding，这个如果你没听说和使用过，就悲哀了）是一个可以让你更快更高效地编写HTML和CSS，节省你大量时间的插件。怎么使用？你只需按约定的缩写形式书写而不用写整个代码，然后按“扩展”键，这些缩写就会自动扩展为对应的代码内容。 比如，你只需要输入<strong><em>((h4&gt;a[rel=external])+p&gt;img[width=500 height=320])</em>12*</strong> ，然后它会被扩展转换成12个列表项和紧随其后的图像。然后你就可以在此基础上再填写内容，就这么简单。</p>
+<h3 id="JsFormat-javascript格式化"><a href="#JsFormat-javascript格式化" class="headerlink" title="JsFormat javascript格式化"></a>JsFormat javascript格式化</h3><p>有时从网上扒了人家的js代码来学习学习，打开发现被压缩了，这时就可以用JsFormat插件格式化js代码，恢复未压缩时候的排版，挺给力的。按快捷键Ctrl+Alt+F即可格式化当前的js文件了。</p>
+<p>插件下载：<a href="https://github.com/jdc0589/JsFormat" target="_blank" rel="external">https://github.com/jdc0589/JsFormat</a></p>
+<h3 id="BracketHighlighter-高亮显示匹配的括号、引号和标签"><a href="#BracketHighlighter-高亮显示匹配的括号、引号和标签" class="headerlink" title="BracketHighlighter 高亮显示匹配的括号、引号和标签"></a>BracketHighlighter 高亮显示匹配的括号、引号和标签</h3><p>BracketHighlighter这个插件能在左侧高亮显示匹配的括号、引号和标签，能匹配的 [] , () , {} , “”, ‘’ , 等甚至是自定义的标签，当看到密密麻麻的代码分不清标签之间包容嵌套的关系时，这款插件就能很好地帮你理清楚代码结构，快速定位括号，引号和标签内的范围。</p>
+<h3 id="bootstrap-snapshot，简直是bootstrap神器"><a href="#bootstrap-snapshot，简直是bootstrap神器" class="headerlink" title="bootstrap snapshot，简直是bootstrap神器"></a>bootstrap snapshot，简直是bootstrap神器</h3><p>一个bootstrap提示插件 安装安成后，需要修改一下配置preferences–&gt;settings-user，添加如下触发器。</p>
+<pre><code>&quot;auto_complete_triggers&quot;: [ { &quot;characters&quot;: &quot;-&quot;, &quot;selector&quot;: &quot;text.html&quot; }, { &quot;characters&quot;: &quot;bs3&quot;, &quot;selector&quot;: &quot;text.html&quot; } ]
+</code></pre><h3 id="MarkDown-Editing"><a href="#MarkDown-Editing" class="headerlink" title="MarkDown Editing"></a>MarkDown Editing</h3><p>SublimeText不仅仅是能够查看和编辑 Markdown 文件，但它会视它们为格式很糟糕的纯文本。这个插件通过适当的颜色高亮和其它功能来更好地完成这些任务。</p>
+<h3 id="DocBlockr"><a href="#DocBlockr" class="headerlink" title="DocBlockr"></a>DocBlockr</h3><p>DocBlockr 可以使你很方便地对代码建立文档。它会解析函数，变量，和参数，根据它们自动生成文档范式，你的工作就是去填充对应的说明。</p>
+<h3 id="SideBarEnhancements-侧边栏增强"><a href="#SideBarEnhancements-侧边栏增强" class="headerlink" title="SideBarEnhancements 侧边栏增强"></a>SideBarEnhancements 侧边栏增强</h3><p>SideBarEnhancements本是增强侧边栏的插件，这里将教大家如何用来做sublime text 3浏览器预览插件，并可自定义浏览器预览的快捷键。 安装此插件，点击工具栏的preferences &gt; package setting &gt; side bar &gt; Key Building-User，键入以下代码，这里设置按Ctrl+Shift+C复制文件路径，按F1~F5分别在firefox，chrome，IE，safari，opera浏览器预览效果，当然你也可以自己定义喜欢的快捷键，最后注意代码中的浏览器路径要以自己电脑里的文件路径为准。</p>
+<pre><code>[ { &quot;keys&quot;: [&quot;ctrl+shift+c&quot;], &quot;command&quot;: &quot;copy_path&quot; }, //firefox 
+{ &quot;keys&quot;: [&quot;f1&quot;],
+&quot;command&quot;: &quot;side_bar_files_open_with&quot;,
+&quot;args&quot;: { &quot;paths&quot;: [], &quot;application&quot;: &quot;C:\\software\\Browser\\Mozilla Firefox\\firefox.exe&quot;,
+&quot;extensions&quot;:&quot;.*&quot; //匹配任何文件类型 
+} 
+}, 
+//chrome 
+{ &quot;keys&quot;: [&quot;f2&quot;], &quot;command&quot;: &quot;side_bar_files_open_with&quot;, &quot;args&quot;: { &quot;paths&quot;: [], &quot;application&quot;: &quot;C:\\Users\\Mr.DenGo\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe&quot;, &quot;extensions&quot;:&quot;.*&quot; } }, 
+//ie
+{ &quot;keys&quot;: [&quot;f3&quot;], 
+&quot;command&quot;: &quot;side_bar_files_open_with&quot;, 
+&quot;args&quot;: { &quot;paths&quot;: [], &quot;application&quot;: &quot;C:\\Program Files\\Internet Explorer\\iexplore.exe&quot;, &quot;extensions&quot;:&quot;.*&quot; } }, 
+//safari 
+{ &quot;keys&quot;: [&quot;f4&quot;], &quot;command&quot;: &quot;side_bar_files_open_with&quot;, &quot;args&quot;: { &quot;paths&quot;: [], &quot;application&quot;: &quot;C:\\software\\Browser\\Safari\\safari.exe&quot;, &quot;extensions&quot;:&quot;.*&quot; } }, 
+//opera 
+{ &quot;keys&quot;: [&quot;f5&quot;], 
+&quot;command&quot;: &quot;side_bar_files_open_with&quot;,
+&quot;args&quot;: { &quot;paths&quot;: [], &quot;application&quot;: &quot;C:\\software\\Browser\\opera\\opera.exe&quot;, &quot;extensions&quot;:&quot;.*&quot; }
+}
+]
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;sublime插件&quot;&gt;&lt;a href=&quot;#sublime插件&quot; class=&quot;headerlink&quot; title=&quot;sublime插件&quot;&gt;&lt;/a&gt;sublime插件&lt;/h2&gt;&lt;p&gt;sublime号称前端开发利器，尤其是sublime的各种好用的插件更是如虎添翼，使
+    
+    </summary>
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Sublime Text 3" scheme="http://yoursite.com/tags/Sublime-Text-3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sublime Text 3快捷键汇总</title>
+    <link href="http://yoursite.com/2016/03/03/Sublime%20Text%203%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/"/>
+    <id>http://yoursite.com/2016/03/03/Sublime Text 3 快捷键汇总/</id>
+    <published>2016-03-03T08:03:59.000Z</published>
+    <updated>2017-03-07T06:45:14.545Z</updated>
+    
+    <content type="html"><![CDATA[<p>Sublime Text 3非常实用，但是想要用好，一些快捷键不可或缺，所以转了这个快捷键汇总。<br>用惯了vim，有些快捷键也懒得用了，尤其是在win下面，还有图形界面，所以个人觉得最有用的还是搜索类，对于阅读和修改代码来说，非常实用。</p>
+<h2 id="选择类"><a href="#选择类" class="headerlink" title="选择类"></a>选择类</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th style="text-align:center">功能          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+D</td>
+<td style="text-align:center">选中光标所占的文本，继续操作则会选中下一个相同的文本。</td>
+</tr>
+<tr>
+<td>Alt+F3</td>
+<td style="text-align:center">选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。</td>
+</tr>
+<tr>
+<td>Ctrl+L</td>
+<td style="text-align:center">选中整行，继续操作则继续选择下一行，效果和</td>
+</tr>
+<tr>
+<td>Shift+↓</td>
+<td style="text-align:center">效果一样。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+L</td>
+<td style="text-align:center">先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+M</td>
+<td style="text-align:center">选择括号内的内容（继续选择父括号）。举个栗子：快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容。</td>
+</tr>
+<tr>
+<td>Ctrl+M</td>
+<td style="text-align:center">光标移动至括号内结束或开始的位置。</td>
+</tr>
+<tr>
+<td>Ctrl+Enter</td>
+<td style="text-align:center">在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Enter</td>
+<td style="text-align:center">在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+[</td>
+<td style="text-align:center">选中代码，按下快捷键，折叠代码。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+]</td>
+<td style="text-align:center">选中代码，按下快捷键，展开代码。</td>
+</tr>
+<tr>
+<td>Ctrl+K+0</td>
+<td style="text-align:center">展开所有折叠代码。</td>
+</tr>
+<tr>
+<td>Ctrl+←</td>
+<td style="text-align:center">向左单位性地移动光标，快速移动光标。</td>
+</tr>
+<tr>
+<td>Ctrl+→</td>
+<td style="text-align:center">向右单位性地移动光标，快速移动光标。</td>
+</tr>
+<tr>
+<td>shift+↑</td>
+<td style="text-align:center">向上选中多行。</td>
+</tr>
+<tr>
+<td>shift+↓</td>
+<td style="text-align:center">向下选中多行。</td>
+</tr>
+<tr>
+<td>Shift+←</td>
+<td style="text-align:center">向左选中文本。</td>
+</tr>
+<tr>
+<td>Shift+→</td>
+<td style="text-align:center">向右选中文本。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+←</td>
+<td style="text-align:center">向左单位性地选中文本。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+→</td>
+<td style="text-align:center">向右单位性地选中文本。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+↑</td>
+<td style="text-align:center">将光标所在行和上一行代码互换（将光标所在行插入到上一行之前）。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+↓</td>
+<td style="text-align:center">将光标所在行和下一行代码互换（将光标所在行插入到下一行之后）。</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+↑</td>
+<td style="text-align:center">向上添加多行光标，可同时编辑多行。</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+↓</td>
+<td style="text-align:center">向下添加多行光标，可同时编辑多行。  </td>
+</tr>
+</tbody>
+</table>
+<h2 id="编辑类"><a href="#编辑类" class="headerlink" title="编辑类"></a>编辑类</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th style="text-align:center">功能          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+J</td>
+<td style="text-align:center">合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+D</td>
+<td style="text-align:center">复制光标所在整行，插入到下一行。</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td style="text-align:center">向右缩进。</td>
+</tr>
+<tr>
+<td>Shift+Tab</td>
+<td style="text-align:center">向左缩进。</td>
+</tr>
+<tr>
+<td>Ctrl+K+K</td>
+<td style="text-align:center">从光标处开始删除代码至行尾。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+K</td>
+<td style="text-align:center">删除整行。</td>
+</tr>
+<tr>
+<td>Ctrl+/</td>
+<td style="text-align:center">注释单行。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+/</td>
+<td style="text-align:center">注释多行。</td>
+</tr>
+<tr>
+<td>Ctrl+K+U</td>
+<td style="text-align:center">转换大写。</td>
+</tr>
+<tr>
+<td>Ctrl+K+L</td>
+<td style="text-align:center">转换小写。</td>
+</tr>
+<tr>
+<td>Ctrl+Z</td>
+<td style="text-align:center">撤销。</td>
+</tr>
+<tr>
+<td>Ctrl+Y</td>
+<td style="text-align:center">恢复撤销。</td>
+</tr>
+<tr>
+<td>Ctrl+U</td>
+<td style="text-align:center">软撤销，感觉和</td>
+<td>Gtrl+Z</td>
+<td>一样。</td>
+</tr>
+<tr>
+<td>Ctrl+F2</td>
+<td style="text-align:center">设置书签</td>
+</tr>
+<tr>
+<td>Ctrl+T</td>
+<td style="text-align:center">左右字母互换。</td>
+</tr>
+<tr>
+<td>F6</td>
+<td style="text-align:center">单词检测拼写</td>
+</tr>
+</tbody>
+</table>
+<h2 id="搜索类"><a href="#搜索类" class="headerlink" title="搜索类"></a>搜索类</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th style="text-align:center">功能          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+F</td>
+<td style="text-align:center">打开底部搜索框，查找关键字。</td>
+</tr>
+<tr>
+<td>Ctrl+shift+F</td>
+<td style="text-align:center">在文件夹内查找，与普通编辑器不同的地方是sublime允许添加多个文件夹进行查找，略高端，未研究。</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td style="text-align:center">打开搜索框。举个栗子：1、输入当前项目中的文件名，快速搜索文件，2、输入@和关键字，查找文件中函数名，3、输入：和数字，跳转到文件中该行代码，4、输入#和关键字，查找变量名。</td>
+</tr>
+<tr>
+<td>Ctrl+G</td>
+<td style="text-align:center">打开搜索框，自动带：，输入数字跳转到该行代码。举个栗子：在页面代码比较长的文件中快速定位。</td>
+</tr>
+<tr>
+<td>Ctrl+R</td>
+<td style="text-align:center">打开搜索框，自动带@，输入关键字，查找文件中的函数名。举个栗子：在函数较多的页面快速查找某个函数。</td>
+</tr>
+<tr>
+<td>Ctrl+：</td>
+<td style="text-align:center">打开搜索框，自动带#，输入关键字，查找文件中的变量名、属性名等。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+P</td>
+<td style="text-align:center">打开命令框。场景栗子：打开命名框，输入关键字，调用sublime</td>
+<td>text或插件的功能，例如使用package安装插件。</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td style="text-align:center">退出光标多行选择，退出搜索框，命令框等。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="显示类"><a href="#显示类" class="headerlink" title="显示类"></a>显示类</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th style="text-align:center">功能          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+Tab</td>
+<td style="text-align:center">按文件浏览过的顺序，切换当前窗口的标签页。</td>
+</tr>
+<tr>
+<td>Ctrl+PageDown</td>
+<td style="text-align:center">向左切换当前窗口的标签页。</td>
+</tr>
+<tr>
+<td>Ctrl+PageUp</td>
+<td style="text-align:center">向右切换当前窗口的标签页。</td>
+</tr>
+<tr>
+<td>Alt+Shift+1</td>
+<td style="text-align:center">窗口分屏，恢复默认1屏（非小键盘的数字）</td>
+</tr>
+<tr>
+<td>Alt+Shift+2</td>
+<td style="text-align:center">左右分屏-2列</td>
+</tr>
+<tr>
+<td>Alt+Shift+3</td>
+<td style="text-align:center">左右分屏-3列</td>
+</tr>
+<tr>
+<td>Alt+Shift+4</td>
+<td style="text-align:center">左右分屏-4列</td>
+</tr>
+<tr>
+<td>Alt+Shift+5</td>
+<td style="text-align:center">等分4屏</td>
+</tr>
+<tr>
+<td>Alt+Shift+8</td>
+<td style="text-align:center">垂直分屏-2屏</td>
+</tr>
+<tr>
+<td>Alt+Shift+9</td>
+<td style="text-align:center">垂直分屏-3屏</td>
+</tr>
+<tr>
+<td>Ctrl+K+B</td>
+<td style="text-align:center">开启/关闭侧边栏。</td>
+</tr>
+<tr>
+<td>F11</td>
+<td style="text-align:center">全屏模式</td>
+</tr>
+<tr>
+<td>Shift+F11</td>
+<td style="text-align:center">免打扰模式</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Sublime Text 3非常实用，但是想要用好，一些快捷键不可或缺，所以转了这个快捷键汇总。&lt;br&gt;用惯了vim，有些快捷键也懒得用了，尤其是在win下面，还有图形界面，所以个人觉得最有用的还是搜索类，对于阅读和修改代码来说，非常实用。&lt;/p&gt;
+&lt;h2 id=&quot;选择类&quot;
+    
+    </summary>
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Sublime Text 3" scheme="http://yoursite.com/tags/Sublime-Text-3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>测试</title>
+    <link href="http://yoursite.com/2016/02/01/feiji/"/>
+    <id>http://yoursite.com/2016/02/01/feiji/</id>
+    <published>2016-02-01T08:03:59.000Z</published>
+    <updated>2017-03-07T06:46:57.956Z</updated>
+    
+    <content type="html"><![CDATA[<p>  模版测试！！！！！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;  模版测试！！！！！&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Testing" scheme="http://yoursite.com/categories/Testing/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+</feed>
