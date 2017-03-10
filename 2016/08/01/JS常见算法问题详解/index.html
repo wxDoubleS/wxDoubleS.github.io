@@ -1,0 +1,1315 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+  <link rel="alternate" href="https://wxdoubles.github.io/atom.xml" title="ss.blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="JavaScript Specification阐述下 JavaScript 中的变量提升所谓提升，顾名思义即是 JavaScript 会将所有的声明提升到当前作用域的顶部。这也就意味着我们可以在某个变量声明前就使用该变量，不过虽然 JavaScript 会将声明提升到顶部，但是并不会执行真的初始化过程。
+阐述下 use strict; 的作用use strict; 顾名思义也就是 JavaScr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS常见算法问题详解">
+<meta property="og:url" content="http://yoursite.com/2016/08/01/JS常见算法问题详解/index.html">
+<meta property="og:site_name" content="ss.blog">
+<meta property="og:description" content="JavaScript Specification阐述下 JavaScript 中的变量提升所谓提升，顾名思义即是 JavaScript 会将所有的声明提升到当前作用域的顶部。这也就意味着我们可以在某个变量声明前就使用该变量，不过虽然 JavaScript 会将声明提升到顶部，但是并不会执行真的初始化过程。
+阐述下 use strict; 的作用use strict; 顾名思义也就是 JavaScr">
+<meta property="og:updated_time" content="2017-03-09T09:22:04.224Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS常见算法问题详解">
+<meta name="twitter:description" content="JavaScript Specification阐述下 JavaScript 中的变量提升所谓提升，顾名思义即是 JavaScript 会将所有的声明提升到当前作用域的顶部。这也就意味着我们可以在某个变量声明前就使用该变量，不过虽然 JavaScript 会将声明提升到顶部，但是并不会执行真的初始化过程。
+阐述下 use strict; 的作用use strict; 顾名思义也就是 JavaScr">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6393194482208081000',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/01/JS常见算法问题详解/"/>
+
+
+
+
+
+  <title> JS常见算法问题详解 | ss.blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  
+  <script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ss.blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">孙帅</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/01/JS常见算法问题详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="孙帅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img.qqai.net/uploads/i_1_2506683885x3484561436_21.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ss.blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS常见算法问题详解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-01T15:22:03+08:00">
+                2016-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/08/01/JS常见算法问题详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/01/JS常见算法问题详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JavaScript-Specification"><a href="#JavaScript-Specification" class="headerlink" title="JavaScript Specification"></a>JavaScript Specification</h1><h2 id="阐述下-JavaScript-中的变量提升"><a href="#阐述下-JavaScript-中的变量提升" class="headerlink" title="阐述下 JavaScript 中的变量提升"></a>阐述下 JavaScript 中的变量提升</h2><p>所谓提升，顾名思义即是 JavaScript 会将所有的声明提升到当前作用域的顶部。这也就意味着我们可以在某个变量声明前就使用该变量，不过虽然 JavaScript 会将声明提升到顶部，但是并不会执行真的初始化过程。</p>
+<h2 id="阐述下-use-strict-的作用"><a href="#阐述下-use-strict-的作用" class="headerlink" title="阐述下 use strict; 的作用"></a>阐述下 use strict; 的作用</h2><p>use strict; 顾名思义也就是 JavaScript 会在所谓严格模式下执行，其一个主要的优势在于能够强制开发者避免使用未声明的变量。对于老版本的浏览器或者执行引擎则会自动忽略该指令。</p>
+<pre><code>// Example of strict mode
+&quot;use strict&quot;;
+
+catchThemAll();
+function catchThemAll() {
+  x = 3.14; // Error will be thrown
+  return x * x;
+}
+</code></pre><h2 id="解释下什么是-Event-Bubbling-以及如何避免"><a href="#解释下什么是-Event-Bubbling-以及如何避免" class="headerlink" title="解释下什么是 Event Bubbling 以及如何避免"></a>解释下什么是 Event Bubbling 以及如何避免</h2><p>Event Bubbling 即指某个事件不仅会触发当前元素，还会以嵌套顺序传递到父元素中。直观而言就是对于某个子元素的点击事件同样会被父元素的点击事件处理器捕获。避免 Event Bubbling 的方式可以使用event.stopPropagation() 或者 IE 9 以下使用event.cancelBubble。</p>
+<h2 id="与-的区别是什么"><a href="#与-的区别是什么" class="headerlink" title="== 与 === 的区别是什么"></a>== 与 === 的区别是什么</h2><p>=== 也就是所谓的严格比较，关键的区别在于=== 会同时比较类型与值，而不是仅比较值。</p>
+<pre><code>// Example of comparators
+0 == false; // true
+0 === false; // false
+
+2 == &apos;2&apos;; // true
+2 === &apos;2&apos;; // false
+</code></pre><h2 id="解释下-null-与-undefined-的区别"><a href="#解释下-null-与-undefined-的区别" class="headerlink" title="解释下 null 与 undefined 的区别"></a>解释下 null 与 undefined 的区别</h2><p>JavaScript 中，null 是一个可以被分配的值，设置为 null 的变量意味着其无值。而 undefined 则代表着某个变量虽然声明了但是尚未进行过任何赋值。</p>
+<h2 id="解释下-Prototypal-Inheritance-与-Classical-Inheritance-的区别"><a href="#解释下-Prototypal-Inheritance-与-Classical-Inheritance-的区别" class="headerlink" title="解释下 Prototypal Inheritance 与 Classical Inheritance 的区别"></a>解释下 Prototypal Inheritance 与 Classical Inheritance 的区别</h2><p>在类继承中，类是不可变的，不同的语言中对于多继承的支持也不一样，有些语言中还支持接口、final、abstract 的概念。而原型继承则更为灵活，原型本身是可以可变的，并且对象可能继承自多个原型。</p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="找出整型数组中乘积最大的三个数"><a href="#找出整型数组中乘积最大的三个数" class="headerlink" title="找出整型数组中乘积最大的三个数"></a>找出整型数组中乘积最大的三个数</h2><p>给定一个包含整数的无序数组，要求找出乘积最大的三个数。</p>
+<pre><code>var unsorted_array = [-10, 7, 29, 30, 5, -10, -70];
+
+computeProduct(unsorted_array); // 21000
+
+function sortIntegers(a, b) {
+  return a - b;
+}
+
+// greatest product is either (min1 * min2 * max1 || max1 * max2 * max3)
+function computeProduct(unsorted) {
+  var sorted_array = unsorted.sort(sortIntegers),
+product1 = 1,
+product2 = 1,
+array_n_element = sorted_array.length - 1;
+
+  // Get the product of three largest integers in sorted array
+  for (var x = array_n_element; x &gt; array_n_element - 3; x--) {
+  product1 = product1 * sorted_array[x];
+  }
+  product2 = sorted_array[0] * sorted_array[1] * sorted_array[array_n_element];
+
+  if (product1 &gt; product2) return product1;
+
+  return product2
+};
+</code></pre><h2 id="寻找连续数组中的缺失数"><a href="#寻找连续数组中的缺失数" class="headerlink" title="寻找连续数组中的缺失数"></a>寻找连续数组中的缺失数</h2><p>给定某无序数组，其包含了 n 个连续数字中的 n - 1 个，已知上下边界，要求以O(n)的复杂度找出缺失的数字。</p>
+<pre><code>// The output of the function should be 8
+var array_of_integers = [2, 5, 1, 4, 9, 6, 3, 7];
+var upper_bound = 9;
+var lower_bound = 1;
+
+findMissingNumber(array_of_integers, upper_bound, lower_bound); //8
+
+function findMissingNumber(array_of_integers, upper_bound, lower_bound) {
+
+  // Iterate through array to find the sum of the numbers
+  var sum_of_integers = 0;
+  for (var i = 0; i &lt; array_of_integers.length; i++) {
+sum_of_integers += array_of_integers[i];
+  }
+
+  // 以高斯求和公式计算理论上的数组和
+  // Formula: [(N * (N + 1)) / 2] - [(M * (M - 1)) / 2];
+  // N is the upper bound and M is the lower bound
+
+  upper_limit_sum = (upper_bound * (upper_bound + 1)) / 2;
+  lower_limit_sum = (lower_bound * (lower_bound - 1)) / 2;
+
+  theoretical_sum = upper_limit_sum - lower_limit_sum;
+
+  //
+  return (theoretical_sum - sum_of_integers)
+}
+</code></pre><h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><p>给定某无序数组，要求去除数组中的重复数字并且返回新的无重复数组。</p>
+<pre><code>// ES6 Implementation
+var array = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
+
+Array.from(new Set(array)); // [1, 2, 3, 5, 9, 8]
+
+
+// ES5 Implementation
+var array = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
+
+uniqueArray(array); // [1, 2, 3, 5, 9, 8]
+
+function uniqueArray(array) {
+  var hashmap = {};
+  var unique = [];
+  for(var i = 0; i &lt; array.length; i++) {
+// If key returns null (unique), it is evaluated as false.
+if(!hashmap.hasOwnProperty([array[i]])) {
+  hashmap[array[i]] = 1;
+  unique.push(array[i]);
+}
+  }
+  return unique;
+}
+</code></pre><h2 id="数组中元素最大差值计算"><a href="#数组中元素最大差值计算" class="headerlink" title="数组中元素最大差值计算"></a>数组中元素最大差值计算</h2><p>给定某无序数组，求取任意两个元素之间的最大差值，注意，这里要求差值计算中较小的元素下标必须小于较大元素的下标。譬如[7, 8, 4, 9, 9, 15, 3, 1, 10]这个数组的计算值是 11( 15 - 4 ) 而不是 14(15 - 1)，因为 15 的下标小于 1。</p>
+<pre><code>var array = [7, 8, 4, 9, 9, 15, 3, 1, 10];
+// [7, 8, 4, 9, 9, 15, 3, 1, 10] would return `11` based on the difference between `4` and `15`
+// Notice: It is not `14` from the difference between `15` and `1` because 15 comes before 1.
+
+findLargestDifference(array);
+
+function findLargestDifference(array) {
+
+  // 如果数组仅有一个元素，则直接返回 -1
+
+  if (array.length &lt;= 1) return -1;
+
+  // current_min 指向当前的最小值
+
+  var current_min = array[0];
+  var current_max_difference = 0;
+
+  // 遍历整个数组以求取当前最大差值，如果发现某个最大差值，则将新的值覆盖 current_max_difference
+  // 同时也会追踪当前数组中的最小值，从而保证 `largest value in future` - `smallest value before it`
+
+  for (var i = 1; i &lt; array.length; i++) {
+if (array[i] &gt; current_min &amp;&amp; (array[i] - current_min &gt; current_max_difference)) {
+  current_max_difference = array[i] - current_min;
+} else if (array[i] &lt;= current_min) {
+  current_min = array[i];
+}
+  }
+
+  // If negative or 0, there is no largest difference
+  if (current_max_difference &lt;= 0) return -1;
+
+  return current_max_difference;
+}
+</code></pre><h2 id="数组中元素乘积"><a href="#数组中元素乘积" class="headerlink" title="数组中元素乘积"></a>数组中元素乘积</h2><p>给定某无序数组，要求返回新数组 output ，其中 output[i] 为原数组中除了下标为 i 的元素之外的元素乘积，要求以 O(n) 复杂度实现：</p>
+<pre><code>var firstArray = [2, 2, 4, 1];
+var secondArray = [0, 0, 0, 2];
+var thirdArray = [-2, -2, -3, 2];
+
+productExceptSelf(firstArray); // [8, 8, 4, 16]
+productExceptSelf(secondArray); // [0, 0, 0, 0]
+productExceptSelf(thirdArray); // [12, 12, 8, -12]
+
+function productExceptSelf(numArray) {
+  var product = 1;
+  var size = numArray.length;
+  var output = [];
+
+  // From first array: [1, 2, 4, 16]
+  // The last number in this case is already in the right spot (allows for us)
+  // to just multiply by 1 in the next step.
+  // This step essentially gets the product to the left of the index at index + 1
+  for (var x = 0; x &lt; size; x++) {
+  output.push(product);
+  product = product * numArray[x];
+  }
+
+  // From the back, we multiply the current output element (which represents the product
+  // on the left of the index, and multiplies it by the product on the right of the element)
+  var product = 1;
+  for (var i = size - 1; i &gt; -1; i--) {
+  output[i] = output[i] * product;
+  product = product * numArray[i];
+  }
+
+  return output;
+}
+</code></pre><h2 id="数组交集"><a href="#数组交集" class="headerlink" title="数组交集"></a>数组交集</h2><p>给定两个数组，要求求出两个数组的交集，注意，交集中的元素应该是唯一的。</p>
+<pre><code>var firstArray = [2, 2, 4, 1];
+var secondArray = [1, 2, 0, 2];
+
+intersection(firstArray, secondArray); // [2, 1]
+
+function intersection(firstArray, secondArray) {
+  // The logic here is to create a hashmap with the elements of the firstArray as the keys.
+  // After that, you can use the hashmap&apos;s O(1) look up time to check if the element exists in the hash
+  // If it does exist, add that element to the new array.
+
+  var hashmap = {};
+  var intersectionArray = [];
+
+  firstArray.forEach(function(element) {
+hashmap[element] = 1;
+  });
+
+  // Since we only want to push unique elements in our case... we can implement a counter to keep track of what we already added
+  secondArray.forEach(function(element) {
+if (hashmap[element] === 1) {
+  intersectionArray.push(element);
+  hashmap[element]++;
+}
+  });
+
+  return intersectionArray;
+
+  // Time complexity O(n), Space complexity O(n)
+}
+</code></pre><h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="颠倒字符串"><a href="#颠倒字符串" class="headerlink" title="颠倒字符串"></a>颠倒字符串</h2><p>给定某个字符串，要求将其中单词倒转之后然后输出，譬如”Welcome to this Javascript Guide!” 应该输出为 “emocleW ot siht tpircsavaJ !ediuG”。</p>
+<pre><code>var string = &quot;Welcome to this Javascript Guide!&quot;;
+
+// Output becomes !ediuG tpircsavaJ siht ot emocleW
+var reverseEntireSentence = reverseBySeparator(string, &quot;&quot;);
+
+// Output becomes emocleW ot siht tpircsavaJ !ediuG
+var reverseEachWord = reverseBySeparator(reverseEntireSentence, &quot; &quot;);
+
+function reverseBySeparator(string, separator) {
+  return string.split(separator).reverse().join(separator);
+}
+</code></pre><h2 id="乱序同字母字符串"><a href="#乱序同字母字符串" class="headerlink" title="乱序同字母字符串"></a>乱序同字母字符串</h2><p>给定两个字符串，判断是否颠倒字母而成的字符串，譬如Mary与Army就是同字母而顺序颠倒：</p>
+<pre><code>var firstWord = &quot;Mary&quot;;
+var secondWord = &quot;Army&quot;;
+
+isAnagram(firstWord, secondWord); // true
+
+function isAnagram(first, second) {
+  // For case insensitivity, change both words to lowercase.
+  var a = first.toLowerCase();
+  var b = second.toLowerCase();
+
+  // Sort the strings, and join the resulting array to a string. Compare the results
+  a = a.split(&quot;&quot;).sort().join(&quot;&quot;);
+  b = b.split(&quot;&quot;).sort().join(&quot;&quot;);
+
+  return a === b;
+}
+</code></pre><h2 id="会问字符串"><a href="#会问字符串" class="headerlink" title="会问字符串"></a>会问字符串</h2><p>判断某个字符串是否为回文字符串，譬如racecar与race car都是回文字符串：</p>
+<pre><code>isPalindrome(&quot;racecar&quot;); // true
+isPalindrome(&quot;race Car&quot;); // true
+
+function isPalindrome(word) {
+  // Replace all non-letter chars with &quot;&quot; and change to lowercase
+  var lettersOnly = word.toLowerCase().replace(/\s/g, &quot;&quot;);
+
+  // Compare the string with the reversed version of the string
+  return lettersOnly === lettersOnly.split(&quot;&quot;).reverse().join(&quot;&quot;);
+}
+</code></pre><h1 id="栈与队列"><a href="#栈与队列" class="headerlink" title="栈与队列"></a>栈与队列</h1><h2 id="使用两个栈实现入队与出队"><a href="#使用两个栈实现入队与出队" class="headerlink" title="使用两个栈实现入队与出队"></a>使用两个栈实现入队与出队</h2><pre><code>var inputStack = []; // First stack
+var outputStack = []; // Second stack
+
+// For enqueue, just push the item into the first stack
+function enqueue(stackInput, item) {
+  return stackInput.push(item);
+}
+
+function dequeue(stackInput, stackOutput) {
+  // Reverse the stack such that the first element of the output stack is the
+  // last element of the input stack. After that, pop the top of the output to
+  // get the first element that was ever pushed into the input stack
+  if (stackOutput.length &lt;= 0) {
+while(stackInput.length &gt; 0) {
+  var elementToOutput = stackInput.pop();
+  stackOutput.push(elementToOutput);
+}
+  }
+
+  return stackOutput.pop();
+}
+</code></pre><h2 id="判断大括号是否闭合"><a href="#判断大括号是否闭合" class="headerlink" title="判断大括号是否闭合"></a>判断大括号是否闭合</h2><p>创建一个函数来判断给定的表达式中的大括号是否闭合：</p>
+<pre><code>var expression = &quot;{{}}{}{}&quot;
+var expressionFalse = &quot;{}{{}&quot;;
+
+isBalanced(expression); // true
+isBalanced(expressionFalse); // false
+isBalanced(&quot;&quot;); // true
+
+function isBalanced(expression) {
+  var checkString = expression;
+  var stack = [];
+
+  // If empty, parentheses are technically balanced
+  if (checkString.length &lt;= 0) return true;
+
+  for (var i = 0; i &lt; checkString.length; i++) {
+if(checkString[i] === &apos;{&apos;) {
+  stack.push(checkString[i]);
+} else if (checkString[i] === &apos;}&apos;) {
+  // Pop on an empty array is undefined
+  if (stack.length &gt; 0) {
+stack.pop();
+  } else {
+return false;
+  }
+}
+  }
+
+  // If the array is not empty, it is not balanced
+  if (stack.pop()) return false;
+  return true;
+}
+</code></pre><h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="二进制转换"><a href="#二进制转换" class="headerlink" title="二进制转换"></a>二进制转换</h2><p>通过某个递归函数将输入的数字转化为二进制字符串：</p>
+<pre><code>decimalToBinary(3); // 11
+decimalToBinary(8); // 1000
+decimalToBinary(1000); // 1111101000
+
+function decimalToBinary(digit) {
+  if(digit &gt;= 1) {
+// If digit is not divisible by 2 then recursively return proceeding
+// binary of the digit minus 1, 1 is added for the leftover 1 digit
+if (digit % 2) {
+  return decimalToBinary((digit - 1) / 2) + 1;
+} else {
+  // Recursively return proceeding binary digits
+  return decimalToBinary(digit / 2) + 0;
+}
+  } else {
+// Exit condition
+return &apos;&apos;;
+  }
+}
+</code></pre><h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><pre><code>function recursiveBinarySearch(array, value, leftPosition, rightPosition) {
+  // Value DNE
+  if (leftPosition &gt; rightPosition) return -1;
+
+  var middlePivot = Math.floor((leftPosition + rightPosition) / 2);
+  if (array[middlePivot] === value) {
+return middlePivot;
+  } else if (array[middlePivot] &gt; value) {
+return recursiveBinarySearch(array, value, leftPosition, middlePivot - 1);
+  } else {
+return recursiveBinarySearch(array, value, middlePivot + 1, rightPosition);
+  }
+}
+</code></pre><h1 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h1><h2 id="判断是否为-2-的指数值"><a href="#判断是否为-2-的指数值" class="headerlink" title="判断是否为 2 的指数值"></a>判断是否为 2 的指数值</h2><pre><code>isPowerOfTwo(4); // true
+isPowerOfTwo(64); // true
+isPowerOfTwo(1); // true
+isPowerOfTwo(0); // false
+isPowerOfTwo(-1); // false
+
+// For the non-zero case:
+function isPowerOfTwo(number) {
+  // `&amp;` uses the bitwise n.
+  // In the case of number = 4; the expression would be identical to:
+  // `return (4 &amp; 3 === 0)`
+  // In bitwise, 4 is 100, and 3 is 011. Using &amp;, if two values at the same
+  // spot is 1, then result is 1, else 0. In this case, it would return 000,
+  // and thus, 4 satisfies are expression.
+  // In turn, if the expression is `return (5 &amp; 4 === 0)`, it would be false
+  // since it returns 101 &amp; 100 = 100 (NOT === 0)
+
+  return number &amp; (number - 1) === 0;
+}
+
+// For zero-case:
+function isPowerOfTwoZeroCase(number) {
+  return (number !== 0) &amp;&amp; ((number &amp; (number - 1)) === 0);
+}
+</code></pre><p>原文：<a href="https://zhuanlan.zhihu.com/p/25308541" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/25308541</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="孙帅 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="孙帅 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/05/demo-rili/" rel="next" title="制作日历查询功能">
+                <i class="fa fa-chevron-left"></i> 制作日历查询功能
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/01/qianduanzhishidian/" rel="prev" title="前端知识点补漏">
+                前端知识点补漏 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/01/JS常见算法问题详解/"
+           data-title="JS常见算法问题详解" data-url="http://yoursite.com/2016/08/01/JS常见算法问题详解/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://img.qqai.net/uploads/i_1_2506683885x3484561436_21.jpg"
+               alt="孙帅" />
+          <p class="site-author-name" itemprop="name">孙帅</p>
+           
+              <p class="site-description motion-element" itemprop="description">雄关漫道真如铁 长江以南我最美...</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="https://wxdoubles.github.io/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-Specification"><span class="nav-number">1.</span> <span class="nav-text">JavaScript Specification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阐述下-JavaScript-中的变量提升"><span class="nav-number">1.1.</span> <span class="nav-text">阐述下 JavaScript 中的变量提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阐述下-use-strict-的作用"><span class="nav-number">1.2.</span> <span class="nav-text">阐述下 use strict; 的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释下什么是-Event-Bubbling-以及如何避免"><span class="nav-number">1.3.</span> <span class="nav-text">解释下什么是 Event Bubbling 以及如何避免</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与-的区别是什么"><span class="nav-number">1.4.</span> <span class="nav-text">== 与 === 的区别是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释下-null-与-undefined-的区别"><span class="nav-number">1.5.</span> <span class="nav-text">解释下 null 与 undefined 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释下-Prototypal-Inheritance-与-Classical-Inheritance-的区别"><span class="nav-number">1.6.</span> <span class="nav-text">解释下 Prototypal Inheritance 与 Classical Inheritance 的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组"><span class="nav-number">2.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#找出整型数组中乘积最大的三个数"><span class="nav-number">2.1.</span> <span class="nav-text">找出整型数组中乘积最大的三个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻找连续数组中的缺失数"><span class="nav-number">2.2.</span> <span class="nav-text">寻找连续数组中的缺失数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组去重"><span class="nav-number">2.3.</span> <span class="nav-text">数组去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中元素最大差值计算"><span class="nav-number">2.4.</span> <span class="nav-text">数组中元素最大差值计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组中元素乘积"><span class="nav-number">2.5.</span> <span class="nav-text">数组中元素乘积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组交集"><span class="nav-number">2.6.</span> <span class="nav-text">数组交集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">3.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#颠倒字符串"><span class="nav-number">3.1.</span> <span class="nav-text">颠倒字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#乱序同字母字符串"><span class="nav-number">3.2.</span> <span class="nav-text">乱序同字母字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#会问字符串"><span class="nav-number">3.3.</span> <span class="nav-text">会问字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈与队列"><span class="nav-number">4.</span> <span class="nav-text">栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用两个栈实现入队与出队"><span class="nav-number">4.1.</span> <span class="nav-text">使用两个栈实现入队与出队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断大括号是否闭合"><span class="nav-number">4.2.</span> <span class="nav-text">判断大括号是否闭合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#递归"><span class="nav-number">5.</span> <span class="nav-text">递归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制转换"><span class="nav-number">5.1.</span> <span class="nav-text">二进制转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分搜索"><span class="nav-number">5.2.</span> <span class="nav-text">二分搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数字"><span class="nav-number">6.</span> <span class="nav-text">数字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#判断是否为-2-的指数值"><span class="nav-number">6.1.</span> <span class="nav-text">判断是否为 2 的指数值</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">孙帅</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wxdoubles"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+</body>
+</html>
