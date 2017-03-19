@@ -505,7 +505,7 @@ function isPowerOfTwoZeroCase(number) {
     <link href="http://yoursite.com/2016/05/05/demo-rili/"/>
     <id>http://yoursite.com/2016/05/05/demo-rili/</id>
     <published>2016-05-05T09:07:45.000Z</published>
-    <updated>2017-03-10T07:52:54.291Z</updated>
+    <updated>2017-03-10T08:11:34.122Z</updated>
     
     <content type="html"><![CDATA[<p>  使用Date的Date(year,month,date) 构造方法,构造当前日期,打印输出.实现简单的日历查询功能，当查询的日子就是当天，并在日历中标注出来。</p>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -689,10 +689,10 @@ new Date(year,month).printCalendar();
     
     </summary>
     
-      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="Demo" scheme="http://yoursite.com/categories/Demo/"/>
     
     
-      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="Demo" scheme="http://yoursite.com/tags/Demo/"/>
     
   </entry>
   
@@ -1186,6 +1186,30 @@ break;
     
     
       <category term="Sublime Text 3" scheme="http://yoursite.com/tags/Sublime-Text-3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cs</title>
+    <link href="http://yoursite.com/2016/02/01/cs/"/>
+    <id>http://yoursite.com/2016/02/01/cs/</id>
+    <published>2016-02-01T08:03:59.000Z</published>
+    <updated>2017-03-19T07:58:44.680Z</updated>
+    
+    <content type="html"><![CDATA[<p>  cs！！！！！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;  cs！！！！！&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Testing" scheme="http://yoursite.com/categories/Testing/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
