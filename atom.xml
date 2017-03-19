@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-09T06:04:03.544Z</updated>
+  <updated>2017-03-19T08:23:18.127Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于hexo换电脑上传问题</title>
+    <link href="http://yoursite.com/2017/03/01/%E5%85%B3%E4%BA%8Ehexo%E6%8D%A2%E7%94%B5%E8%84%91%E4%B8%8A%E4%BC%A0%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2017/03/01/关于hexo换电脑上传问题/</id>
+    <published>2017-03-01T08:10:30.000Z</published>
+    <updated>2017-03-19T08:23:18.127Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>找到git目录下的Git Bash运行，输入下面两行代码即可<br>    git config –global user.email “you@example.com”<br>    git config –global user.name “Your Name”</p>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>为github帐号添加SSH keys<br>使用git clone命令从github上同步github上的代码库时，如果使用SSH链接（如我自己的esesgrid项目：git@github.com:hmilycc/esesgrid.git），而你的SSH key没有添加到github帐号设置中，系统会报下面的错误：<br>Permission denied (publickey).<br>fatal: Could not read from remote repository.<br>Please make sure you have the correct access rights<br>and the repository exists.<br>这时需要在本地创建SSH key，然后将生成的SSH key文件内容添加到github帐号上去。创建SSH key的方法很简单，生成ssh key的过程如下图所示：<br><img src="http://s14.sinaimg.cn/bmiddle/6b706e15td33670d0210d&amp;690" alt=""><br>然后系统提示输入文件保存位置等信息，连续敲三次回车即可，生成的SSH key文件保存在中~/.ssh/id_rsa.pub文件中。<br>然后用文本编辑工具打开该文件，在linux下可以用cat命令显示id_rsa.pub中的内容（cat  ~/.ssh/id_rsa.pub），让后复制其内容；如果在linux下，也可以直接使用记事本打开该文件，但一定要注意其内容中包含空格和换行，要将其去掉。<br>接着拷贝.ssh/id_rsa.pub文件内的所以内容，将它粘帖到github帐号管理中的添加SSH key界面中。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;第一步&lt;/h4&gt;&lt;p&gt;找到git目录下的Git Bash运行，输入下面两行代码即可&lt;br&gt;    git config –global user.emai
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>前端知识点补漏</title>
@@ -1186,30 +1210,6 @@ break;
     
     
       <category term="Sublime Text 3" scheme="http://yoursite.com/tags/Sublime-Text-3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cs</title>
-    <link href="http://yoursite.com/2016/02/01/cs/"/>
-    <id>http://yoursite.com/2016/02/01/cs/</id>
-    <published>2016-02-01T08:03:59.000Z</published>
-    <updated>2017-03-19T07:58:44.680Z</updated>
-    
-    <content type="html"><![CDATA[<p>  cs！！！！！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;  cs！！！！！&lt;/p&gt;
-
-    
-    </summary>
-    
-      <category term="Testing" scheme="http://yoursite.com/categories/Testing/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
